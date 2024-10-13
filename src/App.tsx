@@ -1,32 +1,12 @@
-// src/App.tsx
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { useUsers } from "./hooks/useUsers";
+
 import "./styles/App.scss";
 
-interface User {
-  id: number;
-  name: string;
-  email: string;
-  phone: string;
-  website: string;
-  address: {
-    street: string;
-    suite: string;
-    city: string;
-    zipcode: string;
-  };
-}
-
 const App: React.FC = () => {
-  const [users, setUsers] = useState<User[]>([]);
+  const { users, loading, error } = useUsers();
 
-  useEffect(() => {
-    axios
-      .get("https://jsonplaceholder.typicode.com/users")
-      .then((response) => setUsers(response.data))
-      .catch((error) => console.error("Error fetching users:", error));
-  }, []);
-
+  if (loading) return <p>Loading users..</p>;
+  if (error) return <p>{error}</p>;
   return (
     <div className="app">
       <h1>User Dashboard</h1>
