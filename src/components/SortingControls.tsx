@@ -1,3 +1,5 @@
+import styles from "../styles/SortingControls.module.scss";
+
 interface SortingControlsProps {
   sortField: "name" | "email";
   sortOrder: "asc" | "desc";
@@ -12,15 +14,15 @@ const SortingControls: React.FC<SortingControlsProps> = ({
   onSortOrderChange,
 }) => {
   return (
-    <div className="sorting-controls">
+    <div className={styles.sortingControls}>
       <button onClick={() => onSortFieldChange("name")}>
-        Sort by Name {sortField === "name" ? "(selected)" : ""}
+        Sort by Name {sortField === "name" ? "✓" : ""}
       </button>
       <button onClick={() => onSortFieldChange("email")}>
-        Sort by Email {sortField === "email" ? "(selected)" : ""}
+        Sort by Email {sortField === "email" ? "✓" : ""}
       </button>
       <button onClick={onSortOrderChange}>
-        {sortOrder === "asc" ? "Ascending" : "Descending"}
+        {sortOrder === "asc" ? "↓" : "↑"}
       </button>
     </div>
   );

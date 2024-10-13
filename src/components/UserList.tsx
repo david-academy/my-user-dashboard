@@ -1,6 +1,6 @@
 import { User } from "../types/User";
 import UserCard from "./UserCard";
-
+import styles from "../styles/UserList.module.scss";
 interface UserListProps {
   users: User[];
   filterText: string;
@@ -19,7 +19,9 @@ const UserList: React.FC<UserListProps> = ({
       user.name.toLowerCase().includes(filterText.toLowerCase()) ||
       user.email.toLowerCase().includes(filterText.toLowerCase())
   );
-
+  /*
+TODO: fix split of names, to get the sorting order of last name, also needs to check for titles to get it right
+*/
   const sortedUsers = [...filteredUsers].sort((a, b) => {
     const fieldA = a[sortField].toLowerCase();
     const fieldB = b[sortField].toLowerCase();
@@ -32,7 +34,7 @@ const UserList: React.FC<UserListProps> = ({
   });
 
   return (
-    <div className="user-cards">
+    <div className={styles.userCards}>
       {sortedUsers.map((user) => (
         <UserCard key={user.id} user={user} />
       ))}

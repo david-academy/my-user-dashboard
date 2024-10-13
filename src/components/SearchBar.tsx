@@ -1,3 +1,5 @@
+import styles from "../styles/SearchBar.module.scss";
+
 interface SearchBarProps {
   filterText: string;
   onFilterChange: (value: string) => void;
@@ -13,7 +15,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
       placeholder="Search by name or email"
       value={filterText}
       onChange={(e) => onFilterChange(e.target.value)}
-      className="search-bar"
+      className={styles.searchBar}
     />
   );
 };

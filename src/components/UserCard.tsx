@@ -1,15 +1,15 @@
 import { User } from "../types/User";
-
+import styles from "../styles/UserCard.module.scss";
 interface UserCardProps {
   user: User;
 }
 
 const UserCard: React.FC<UserCardProps> = ({ user }) => {
   return (
-    <div className="user-card">
+    <div className={styles.userCard}>
       <h2>{user.name}</h2>
       <p>
-        <strong>Email:</strong> {user.email}
+        <strong>Email:</strong> {user.email.toLowerCase()}
       </p>
       <p>
         <strong>Phone:</strong> {user.phone}
